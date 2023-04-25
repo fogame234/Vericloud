@@ -2,7 +2,7 @@ import os
 import natsort
 import re
 
-source_folder = r"C:\Users\Trevor\Documents\Vericloud\Formatting\a\Test"
+source_folder = r"/path"
 pattern = r"^\d+_Combolist.txt$"
 
 existing_files = [f for f in os.listdir(source_folder) if re.match(pattern, f)]

@@ -5,7 +5,6 @@ from alive_progress import alive_bar
 import tkinter
 import shutil
 
-
 # Location Paths
 fileWindow = tkinter.Tk()
 fileWindow.withdraw()

@@ -31,13 +31,8 @@ def get_hash_type(hash_str):
         # Hash length doesn't match any known algorithm
         return 'Unknown'
 
-# Set input and output folder names
-input_foldername = r'C:\Users\Trevor\Documents\VeriCloud\Cleanedtest'
-output_foldername = r'C:\Users\Trevor\Documents\VeriCloud\Cleanedtest'
-
-# Create output folder if it doesn't exist
-if not os.path.exists(output_foldername):
-    os.makedirs(output_foldername)
+# Set input folder name
+input_foldername = r'/path'
 
 # Traverse folder structure and process each text file
 for root, dirs, files in os.walk(input_foldername):
@@ -46,8 +41,7 @@ for root, dirs, files in os.walk(input_foldername):
             # Set input and output file paths
             input_filepath = os.path.join(root, file)
             output_filename = os.path.splitext(file)[0] + '_hash_types.txt'
-            output_filepath = os.path.join(output_foldername, output_filename)
-            delete_filepath = os.path.join(output_foldername, 'delete.txt')
+            output_foldername = root
 
             try:
                 # Determine hash algorithm types for all hash strings in input file
@@ -74,17 +68,16 @@ for root, dirs, files in os.walk(input_foldername):
                             parts = hash_str.split(":")
                             hash_value = parts[1].strip()
                             hash_type = get_hash_type(hash_value)
+                            f.write(f"{hash_str}:{hash_type}\n")
                         except IndexError:
                             # Invalid hash string format, skip this line
                             pass
 
                 # Rename input file to output file
-                os.rename(output_filepath, delete_filepath)
-                os.rename(input_filepath, output_filepath)
-                os.remove(delete_filepath)
+                os.remove(input_filepath)
+                # os.rename(output_filepath, input_filepath)
 
             except FileNotFoundError:
                 print(f"File not found: {input_filepath}")
             except IndexError:
                 print(f"IndexError processing file: {input_filepath}")
-
