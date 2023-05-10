@@ -8,9 +8,9 @@ import shutil
 # Location Paths
 fileWindow = tkinter.Tk()
 fileWindow.withdraw()
-source_folder = r'C:\Users\Trevor\Documents\Vericloud\Cleanedtest'
-dest_folder = r'C:\Users\Trevor\Documents\Vericloud\Formatting\Done'
-fix_folder = r'C:\Users\Trevor\Documents\Vericloud\Formatting\Errors2'
+source_folder = /path
+dest_folder = /path
+fix_folder = /path
 
 patterns = [
     "email",
