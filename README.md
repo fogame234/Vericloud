@@ -10,3 +10,5 @@ Various scripts
 * CleanDirectory.py - Cleans the directory for specific conditions.
 * HaveIbeenPwned.py - Uses the haveibeenpwned API to pull a list of breaches.
 * Pwnd.py - Uses the haveibeenpwned API to find information regarding a specific breach.
+* CSVSplit.py - Used to split CSV files into smaller files
+* TXTSplit.py - Used to split txt files into smaller files
