@@ -8,9 +8,9 @@ import shutil
 # Location Paths
 fileWindow = tkinter.Tk()
 fileWindow.withdraw()
-source_folder = '/path'
-dest_folder = '/path'
-fix_folder = '/path'
+source_folder = r'C:\Users\Trevor\Documents\Vericloud\Cleanedtest'
+dest_folder = r'C:\Users\Trevor\Documents\Vericloud\Formatting\Done'
+fix_folder = r'C:\Users\Trevor\Documents\Vericloud\Formatting\Errors2'
 
 patterns = [
     "email",
@@ -88,7 +88,9 @@ with progress_bar() as bar:
             email = ""
             password = ""
             username = ""
+            phone = ""
             salt = ""
+            altphone = ""
 
             headers = [x.lower() for x in headers]
 
@@ -165,6 +167,7 @@ with progress_bar() as bar:
                             ):
                                 fp.write(str(line) + str("\n"))
                     print(f"Salt password file for {fn} completed")
+
                 if phone in headers:
                     dest_path.parent.mkdir(parents=True, exist_ok=True)
                     comboUser = df[phone] + ":" + df[password]
@@ -178,28 +181,11 @@ with progress_bar() as bar:
                                 and not str(line).__contains__("?")
                                 and not str(line).__contains__("None")
                                 and not str(line).__contains__("none")
-                                
                             ):
                                 fp.write(str(line) + str("\n"))
                     print(f"Phone password file for {fn} completed")
-                if altphone in headers:
-                    dest_path.parent.mkdir(parents=True, exist_ok=True)
-                    comboUser = df[altphone] + ":" + df[password]
-                    with open(
-                        f"{dest_path.parent}\{stem}_altphone.txt", "w", encoding="utf_8"
-                    ) as fp:
-                        for line in comboUser:
-                            if (
-                                not str(line).__contains__("nan")
-                                and not str(line).__contains__("<blank>")
-                                and not str(line).__contains__("?")
-                                and not str(line).__contains__("None")
-                                and not str(line).__contains__("none")
-                                
-                            ):
-                                fp.write(str(line) + str("\n"))
-                    print(f"Alt phone password file for {fn} completed")
             except Exception as e:
+                print(e)
                 fix_path.parent.mkdir(parents=True, exist_ok=True)
                 move_file(src_path.parent, fix_path.parent, fn)
 

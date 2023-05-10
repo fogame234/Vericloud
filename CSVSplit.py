@@ -27,7 +27,7 @@ def process_file(file_path):
             csv_writer.writerow(row)
             row_count += 1
 
-            if row_count == 500:
+            if row_count == 100000:
                 # If we've reached the row limit, close the current output file
                 output_file.close()
                 output_file = None
