@@ -8,9 +8,9 @@ import shutil
 # Location Paths
 fileWindow = tkinter.Tk()
 fileWindow.withdraw()
-source_folder = /path
-dest_folder = /path
-fix_folder = /path
+source_folder = "/path"
+dest_folder = "/path"
+fix_folder = "/path"
 
 patterns = [
     "email",
@@ -181,6 +181,7 @@ with progress_bar() as bar:
                                 and not str(line).__contains__("?")
                                 and not str(line).__contains__("None")
                                 and not str(line).__contains__("none")
+                                and not str(line).__contains__("20%")
                             ):
                                 fp.write(str(line) + str("\n"))
                     print(f"Phone password file for {fn} completed")

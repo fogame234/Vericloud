@@ -1,7 +1,7 @@
 import os
 import csv
 
-INPUT_DIR = /path
+INPUT_DIR = "/path"
 
 def process_file(file_path):
     output_dir_name = os.path.splitext(os.path.basename(file_path))[0]
